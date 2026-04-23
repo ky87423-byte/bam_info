@@ -1,0 +1,117 @@
+Options -Indexes
+
+# =============================================================
+# LITESPEED CACHE
+# 비로그인 공개 페이지는 LiteSpeed가 캐시함.
+# 로그인 여부는 PHP에서 X-LiteSpeed-Cache-Control 헤더로 제어 (engine/_core.php 참고)
+# =============================================================
+<IfModule LiteSpeed>
+    CacheLookup on
+</IfModule>
+
+# =============================================================
+# SECURITY HEADERS
+# =============================================================
+<IfModule mod_headers.c>
+    # 클릭재킹 방지: 다른 사이트의 iframe에 삽입 불가
+    Header always set X-Frame-Options "SAMEORIGIN"
+    # MIME 스니핑 방지
+    Header always set X-Content-Type-Options "nosniff"
+    # XSS 필터 강제 활성화 (구형 브라우저 대응)
+    Header always set X-XSS-Protection "1; mode=block"
+    # 리퍼러 정책: 외부 요청 시 origin만 전송
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    # 불필요한 브라우저 기능 제한
+    Header always set Permissions-Policy "geolocation=(self), camera=(), microphone=()"
+    # 서버 정보 노출 차단
+    Header unset X-Powered-By
+</IfModule>
+
+# =============================================================
+# STATIC ASSET CACHING (CSS, JS, 이미지, 폰트)
+# CSS/JS는 ?v=타임스탬프 캐시버스팅을 사용하므로 1년 캐시 안전
+# =============================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css                  "access plus 1 year"
+    ExpiresByType application/javascript    "access plus 1 year"
+    ExpiresByType text/javascript           "access plus 1 year"
+    ExpiresByType image/jpeg                "access plus 1 year"
+    ExpiresByType image/jpg                 "access plus 1 year"
+    ExpiresByType image/png                 "access plus 1 year"
+    ExpiresByType image/gif                 "access plus 1 year"
+    ExpiresByType image/webp                "access plus 1 year"
+    ExpiresByType image/svg+xml             "access plus 1 year"
+    ExpiresByType image/x-icon              "access plus 1 year"
+    ExpiresByType font/woff2                "access plus 1 year"
+    ExpiresByType font/woff                 "access plus 1 year"
+    ExpiresByType font/ttf                  "access plus 1 year"
+    ExpiresByType font/otf                  "access plus 1 year"
+    ExpiresByType application/font-woff     "access plus 1 year"
+    ExpiresByType application/font-woff2    "access plus 1 year"
+    # HTML/PHP: 캐시 금지 (동적 콘텐츠, LiteSpeed가 별도 관리)
+    ExpiresByType text/html                 "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # 정적 파일: 1년 캐시 + immutable (브라우저 재검증 생략)
+    <FilesMatch "\.(css|js|woff2?|ttf|otf|eot|svg|ico|jpg|jpeg|png|gif|webp)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+# =============================================================
+# GZIP / BROTLI 압축
+# =============================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript text/javascript
+    AddOutputFilterByType DEFLATE application/json application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE font/ttf font/otf image/svg+xml
+    # 이미 압축된 파일은 제외
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp|zip|gz|bz2|rar)$ no-gzip
+</IfModule>
+
+# =============================================================
+# ETAG 비활성화 (Cache-Control로 충분히 제어)
+# =============================================================
+FileETag None
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+
+# =============================================================
+# 민감 파일 직접 접근 차단
+# =============================================================
+<FilesMatch "(^\.env|db_config\.php|composer\.(json|lock)|package(-lock)?\.json)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# =============================================================
+# PHP 백업/임시 파일 차단
+# =============================================================
+<FilesMatch "\.(bak|old|orig|save|swp|tmp|sql)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# =============================================================
+# CORS: 폰트 파일 크로스도메인 허용 (CDN 사용 시 필요)
+# =============================================================
+<IfModule mod_headers.c>
+    <FilesMatch "\.(woff2?|ttf|otf|eot)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>

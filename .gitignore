@@ -1,0 +1,16 @@
+# 업로드 미디어/데이터
+public_html/images/
+public_html/data/
+
+# 환경설정 / 민감정보
+*.env
+config.php
+php.ini
+
+# 로그
+error_log
+*.log
+
+# 시스템
+.DS_Store
+Thumbs.db

@@ -1,0 +1,123 @@
+header {background-color:#252669; }
+.header_menu {border-top-color:#252669}
+.header_menu .main_menu li a:hover {color:#252669}
+.header_menu .main_menu li.on a {color:#252669}
+.header_menu .s_menu .enter_store {background:#252669}
+.header_menu .s_menu .m_menubtn {background-color:#252669}
+.header_menu .menu_open.skin1 .deps1 ul li a:hover {background:#252669; border-color:#252669;}
+.header_menu .menu_open.skin1 .deps1 ul li.on a {background:#252669; border-color:#252669;}
+.header_menu .menu_open.skin1 .deps2 ul li a:hover {color:#252669; background:#252669}
+.header_menu .menu_open.skin1 .deps2 ul li.on a {background:#252669;}
+.header_menu .menu_open.skin2 .deps1 ul li a:hover {background:#252669; border-color:#252669; color:#fff; }
+
+.quick_search .title span {color:#252669}
+.quick_search button {background:#252669}
+
+/*input*/
+label.style1 input[type="checkbox"]:checked + span::before {background-color:#252669; border-color:#252669;}
+
+/*모바일 검색*/
+.m_search_bg {border-top-color:#252669}
+.m_search_bg .result li.search_o button {background:#252669; }
+.m_search .hot_search p {color:#252669}
+
+/*메인 커뮤니티*/
+.all_commu>ul li.first {border-color:#252669; }
+.all_commu>ul li h3 {background-color:#252669;}
+.all_commu>ul li.first .shop_name {border-color:#252669; color:#252669}
+.all_commu>ul li .wrap2 dl dt {color:#252669;}
+.all_commu>ul li .wrap2 dl dd {color:#252669;}
+
+.only_review>ul li .wrap2 dl dt {color:#252669;}
+.only_review>ul li .wrap2 dl dd {color:#252669; }
+.only_review>ul li.first {border-color:#252669; }
+.only_review>ul li.first .title {background-color:#252669; }
+.only_review>ul li.first .shop_name {border-color:#252669; color:#252669;}
+
+
+/*공지사항*/
+footer .main_notice h3 a {color:#fff; background-color:#252669;}
+
+/*모바일*/
+.m_menu .m_top {background:#252669;}
+.m_menu .m_nav_1d>li>a.on {color:#252669;}
+
+/*필터*/
+.filter h2 {background-color:#252669}
+.filter .f_result ul li:last-child button {background-color:#252669; }
+.category_view .m_fiter_btn button {border:1px solid #252669; color:#252669;}
+
+/*제휴업체*/
+.partner h2 b em {color:#252669}
+
+/*테이블스타일*/
+table.style2 { border-top-color:#252669}
+
+/*페이징*/
+.paging ul li.on {border-color:#252669; background-color:#252669; z-index:1}
+
+/*쿠폰상세*/
+.event .btn li:first-child button {background:#252669}
+.event .btn li button {border-color:#252669; color:#252669;}
+
+/*이용후기*/
+.review .thead .select button {background:#252669}
+.review .r_head .t_num b {color:#252669;}
+.commu.view .review_shop .shop_info>div .ev li.shop_infor {border-color:#252669;}
+.commu.view .review_shop .shop_info>div .ev li.shop_infor a {color:#252669;}
+.review_pg .r_head .select button.write {background:#252669}
+.review_pg .r_head .order li.on {background:#251d64; border-color:#251d64}
+
+/*테이블*/
+.commu table.style3 th {border-top-color:#252669;}
+.commu .best {border-top-color:#252669}
+
+/*지도*/
+.my_location button {background-color:#252669}
+section.map .map_list>p b {color:#252669}
+
+/*샵 상세*/
+.shop_detail .tab li.on a {color:#252669; border-color:#252669;}
+.shop_detail .tab_wrap h3 {color:#252669 }
+.shop_detail .rhead {border-top-color:#252669}
+.shop_detail .rhead ul li button {background:#252669}
+.shop_detail .tab_wrap h3 span::after {background:#252669}
+
+/*로그인*/
+.login_sub .logininput button {background:#252669}
+.login_sub .logintab li.on {border-color:#252669;}
+.login_sub .logintab li.on a {color:#252669;}
+
+/*회원가입*/
+.register .order li.on span {background:#252669; border-color:#252669;}
+.register .join_message p:nth-child(1) {background:#252669}
+.register .join_message p:nth-child(3) em {color:#252669}
+
+/*마이페이지*/
+.my_sub .left_menu li.on a {background:#252669}
+.my_sub .left_menu li:hover:after {border-left-color:#252669}
+.my_sub .mail_page .button_area ul li.on button {background-color:#252669; border-color:#252669}
+.my_sub .my_con .date_search ul li.on button {background-color:#252669}
+.my_coupon .top_tab .on {background:#252669}
+.my_coupon .top_tab .on button {background-color:#252669;}
+
+/*공통*/
+button.base {background:#252669;}
+button.base2 {background:#252669;}
+input[type="checkbox"] {accent-color:#252669;}
+.left_menu li.on a {background:#252669;}
+.left_menu li.on a:after {border-left-color:#252669}
+.left_menu li:hover a {background:#252669;}
+.left_menu li:hover a:after {border-left-color:#252669}
+.left_menu li:hover:after {border-left-color:#252669}
+
+/*커뮤니티 left메뉴*/
+.board_leftmenu h2 {background:#252669}
+.board_leftmenu li.on a {color:#252669}
+.board_leftmenu dd ul li a:hover {color:#252669}
+
+/*커뮤니티*/
+.commu.board_list .side_con .fr button {background:#252669}
+.commu .tab_menu li.on a {background:#252669}
+
+
